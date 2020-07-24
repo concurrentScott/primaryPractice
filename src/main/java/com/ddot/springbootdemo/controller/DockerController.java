@@ -1,13 +1,1 @@
-package com.ddot.springbootdemo.controller;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-public class DockerController {
-
-    @RequestMapping("/docker")
-    public String hellowDocker(){
-        return "hello docker";
-    }
-}
+package com.ddot.springbootdemo.controller;import org.springframework.web.bind.annotation.RequestMapping;import org.springframework.web.bind.annotation.RestController;@RestControllerpublic class DockerController {    @RequestMapping("/docker")    public String hellowDocker(){        return "hello docker11";    }}
