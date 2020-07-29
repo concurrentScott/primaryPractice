@@ -11,7 +11,7 @@ import java.util.concurrent.CountDownLatch;
  */
 public class UserCountDownLatch {
 
-    static CountDownLatch latch = new CountDownLatch(6);
+    static CountDownLatch latch = new CountDownLatch(5);
     //初始化线程
     private static class InitThread implements Runnable{
         @Override
@@ -35,7 +35,7 @@ public class UserCountDownLatch {
                 e.printStackTrace();
             }
             for (int i = 0; i < 3; i++) {
-                System.out.println("thread" + Thread.currentThread().getId() + "continue to work");
+                System.out.println("thread bus" + Thread.currentThread().getId() + "continue to work");
             }
         }
     }
