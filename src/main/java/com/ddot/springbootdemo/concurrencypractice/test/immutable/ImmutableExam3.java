@@ -26,6 +26,8 @@ public class ImmutableExam3 {
             = ImmutableMap.<Integer,Integer>builder().put(1,2).put(3,4).build();
 
     public static void main(String[] args) {
+        log.info("love mm");
+
         System.out.println( );
     }
 
