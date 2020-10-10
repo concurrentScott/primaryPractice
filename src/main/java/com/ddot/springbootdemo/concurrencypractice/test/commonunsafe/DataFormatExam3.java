@@ -1,25 +1,29 @@
-package com.ddot.springbootdemo.concurrencypractice.test.count;
+package com.ddot.springbootdemo.concurrencypractice.test.commonunsafe;
 
-import com.ddot.springbootdemo.concurrencypractice.annoation.NotThreadSafe;
 import com.ddot.springbootdemo.concurrencypractice.annoation.ThreadSafe;
 import lombok.extern.slf4j.Slf4j;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
 @ThreadSafe
-public class ConutExample {
+public class DataFormatExam3 {
 
     //请求总数
     public static final Integer clientTotal = 5000;
     //线程数量
     public static final Integer threadTotal = 200;
 
-    public static AtomicInteger count = new AtomicInteger(0);
+    private static DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("yyyyMMdd");
+
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -28,10 +32,11 @@ public class ConutExample {
         final CountDownLatch countDownLatch = new CountDownLatch(clientTotal );
 
         for (int i = 0; i < clientTotal; i++) {
+            final int count = i;
             executorService.execute(() -> {
                 try {
                     semaphore.acquire();
-                    add();
+                    add(count);
                     semaphore.release();
                 }catch (Exception e){
                     log.error("ex",e);
@@ -42,14 +47,13 @@ public class ConutExample {
         }
         countDownLatch.await();
         executorService.shutdown();
-        log.info("count:{}",count.get());
+       // log.info("count:{}",count.get());
 
 
     }
-    private static void add(){
-        count.incrementAndGet();
-        /**
-         * 源码中使用了一个unsafe类
-         */
+    private static void add(int count){
+        log.info("{},{}",count,DateTime.parse("20180802",dateTimeFormatter).toDate());
+
     }
+
 }

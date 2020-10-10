@@ -1,0 +1,13 @@
+server:
+  port: 7788
+  servlet:
+    context-path: /
+jedis:
+  host: 127.0.0.1
+  port: 6379
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: Rootmaster
+    password: Rootmaster@777
+    url: jdbc:mysql://10.0.3.59:3307/dosm_activiti?nullCatalogMeansCurrent=true&useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowMultiQueries=true
