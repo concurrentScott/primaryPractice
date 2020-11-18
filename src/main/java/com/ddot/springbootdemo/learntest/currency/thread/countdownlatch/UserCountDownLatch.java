@@ -3,6 +3,9 @@ package com.ddot.springbootdemo.learntest.currency.thread.countdownlatch;
 import com.ddot.springbootdemo.learntest.currency.tools.SleepTools;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * countdownlatch用法 有5个初始化线程 有6个扣除点
@@ -41,6 +44,12 @@ public class UserCountDownLatch {
     }
 
     public static void main(String[] args) throws InterruptedException {
+        Executor executor = Executors.newFixedThreadPool(2);
+
+        //executor.execute();
+
+
+
         //单独对初始化线程
         new Thread(() -> {
             SleepTools.sm(1);
@@ -65,6 +74,7 @@ public class UserCountDownLatch {
         System.out.println("main do ites work");
 
     }
+
 
 
 
